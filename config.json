@@ -1,0 +1,13 @@
+{
+    "params":
+    {
+        "MYSQL_HOST":"localhost",
+        "MYSQL_USER":"root",
+        "MYSQL_PASS":"",
+        "MYSQL_DB":"notepad",
+        "local_server":"True",
+        "MYSQL_CURSORCLASS":"DictCursor",
+        "admin_user":"admin",
+        "admin_password":"admin"
+    }
+}

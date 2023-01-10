@@ -1,0 +1,121 @@
+.blocker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: ' ';
+    background: rgba(255, 255, 255, 0.788);
+    /*animation: animate 0.3s linear;*/
+  }
+
+  @keyframes animate {
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+  }
+
+  #box{
+    width: 40%;
+    position: absolute;
+    padding: 10px;
+   height: 200px;
+    transform: translate(-50%,-50%);
+    top: 30%;
+    left: 50%;
+    background: white;
+    border-radius: 10px 10px 10px 10px;
+    scroll-behavior: auto; 
+    overflow: hidden;
+    background: rgba(151, 150, 150, 0.829); /*0.226*/
+    text-align: left;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    box-shadow: 12px 5px 20px 2px rgba(0, 0, 0, 0.103);
+    /*animation: animate 1s linear;*/
+    }
+    
+    #buttonbar{
+        position: relative;
+        height: 13%;
+        width: 100%;
+        left: 0.45px;
+        border-radius: 10px 10px 00px 0px;
+        background: rgb(75, 74, 74);
+        
+    }
+    #buttonbar #close{
+       /*height: fit-content;
+        position: relative;
+        border-radius: 30px;
+        font-size: 10px;
+        margin-left: 4px;
+        bottom: 2px;
+        color: aliceblue;
+        background:rgb(255, 75, 75);
+        border: none;*/
+        height: 100%;
+        position: relative;
+        border-radius: 0px;
+        color: aliceblue;
+        background:rgb(255, 75, 75);
+        border: none;
+    }
+    #buttonbar #save{
+        
+        width: fit-content;
+        height: 100%;
+        color: rgb(75, 74, 74);
+        background:rgb(53, 253, 35);
+        border: none;
+        float: right;
+    }
+    #buttonbar button:hover{
+        cursor:pointer;
+    }
+    #textbody{
+        position: relative;
+        width: 98%;
+        height: 90%;
+        margin:5px;
+        margin-left: 5px;
+        background: transparent;
+        border-radius: 0px;
+        /*padding: 2px;
+        padding-top: 0px;*/
+        text-align: left;
+        overflow: hidden;
+    }
+    
+    #textbox{
+        width:100%;
+        font-family: 'Inconsolata',serif;
+        border: none;
+        outline: none;
+        position: relative;
+        overflow: auto;
+        resize: none;
+        background: transparent;
+        text-align: left;
+        font-size: larger;
+    }
+    #textbox::-webkit-scrollbar{
+        width: 10px;
+        margin: auto;
+    }
+    #textbox::-webkit-scrollbar-thumb{
+        border-radius: 20px;
+        size: 10px;
+        right: 10px;
+        background:rgba(114, 114, 114, 0.541)
+    }
+    #textbox::-webkit-scrollbar-thumb:hover{
+        border-radius: 20px;
+        size: 10px;
+        right: 10px;
+        background:rgba(114, 114, 114, 0.8);
+    }

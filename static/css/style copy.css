@@ -1,0 +1,412 @@
+.modal{
+    background: rgba(0, 0, 0, 0.164);
+ }
+
+body{
+    height: 100vh;
+    background: rgb(34,195,191);
+background: linear-gradient(90deg, rgba(34,195,191,1) 0%, rgba(39,214,221,1) 49%, rgba(45,122,253,1) 100%);
+    overflow: auto;
+}
+body::-webkit-scrollbar{
+    display: none;
+}
+.outermost{
+    width: 100%;
+    height: fit-content;
+    color: aliceblue;
+    text-align: center;
+    font-size: 50px;
+    background:transparent;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: 2px 2px 15px gray;
+    animation: outer 1s linear;
+    text-align: center;
+}
+#texttitle{
+    width: 90%;
+    font-size: 40px;
+    outline: none;
+    border: none;
+    margin-bottom: 0px;
+}
+#textadder{
+    outline: none;
+    resize: none;
+    width: 100%;
+    border: none;
+    height: 200px;
+    font-size: 25px;
+}
+
+.modal-content{
+position: relative;
+}
+.btn{
+    position: absolute;
+    background: rgb(187, 187, 187);
+    bottom: 5px;
+    right: 5px;
+    font-size: 1px;
+    border-radius: 30px;
+    padding: 5px;
+}
+.btn span{
+    font-size: 25px;
+}
+@keyframes forNotes {
+    0%{
+        transform: scale(0);
+        opacity: 0;
+    }
+    80%{
+        transform: scale(1.1);
+        opacity: 0.85;
+    }
+    90%
+    {
+        transform: scale(0.9);
+        opacity: 0.9;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }    
+}
+
+@keyframes outer {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes task {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes tasks {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes delete {
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+
+.logout{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+}
+
+.outer{
+    display: flex;
+    width: 70%;
+    position: relative;
+    padding: 5px;
+    margin-top: 30px;
+    margin-left: 33%;
+    /*position: absolute;*/ 
+    height: 70px;
+    /*transform: translate(-50%,-50%);*/
+    /*top: 15%;
+    left: 50%;*/
+    background: transparent;
+    /*background: rgba(255, 255, 255, 0.233);*/
+    border-radius: 15px;
+    scroll-behavior: auto; 
+    overflow: auto;
+    /*box-shadow: 0px 0px 10px 0px gray;*/
+    animation: outer 1s linear;
+}
+
+#task1{
+    position: relative;
+    /*padding:10px;*/
+    height: fit-content;  
+    display: block;
+    width: 35%;
+    top:5%  
+}
+#task1 textarea{
+    padding: 12px;
+    position: relative;
+    border-radius: 20px;
+    border: none;
+    /*float: left;*/
+    background:inherit;
+    box-shadow: 0px 0px 5px 0px rgb(136, 136, 136) inset;
+    width: 100%;
+    height: 50px;
+    font-size: larger;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    resize: none;
+}
+
+#task1 span{
+    position: absolute;
+    background:rgba(126, 126, 126, 0.411);
+    border-radius: 30px;
+    font-size: 40px;
+    padding: 5px;
+    right: 15px;
+    color: rgba(0, 0, 0, 0.534);
+    transition: all 0.2s linear;
+}
+#search{
+    right: 75px;
+
+}
+
+.outer .tools{
+    background: rgba(56, 56, 56, 0.231);
+    padding: 5px;
+    border-radius: 20px;
+    margin: 10px;
+    font-size: 30px;
+    top: 0%;
+    transition: all 0.2s linear;
+}
+
+.outer span:hover{
+    background:rgba(245, 245, 245, 0.726);
+    color: rgba(0, 0, 0, 0.788);
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px 0px rgba(212, 212, 212, 0.753);
+    transition: all 0.2s linear;
+}
+.outer #add:hover{
+    transform: rotate(180deg);
+}
+
+.tasks{
+    position: relative;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top:60px;
+    margin-bottom: 5px;
+    padding: 10px;
+    background: transparent;
+    border: 2px gray;
+    border-radius: 10px;
+    text-align: left;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: large;
+    overflow: auto;
+    max-height:350px;
+    display: flex;
+    flex-wrap: wrap;
+    animation: tasks 0.3s linear;
+}
+.tasks::-webkit-scrollbar,#task1 textarea::-webkit-scrollbar,#textadder::-webkit-scrollbar{
+    width: 10px;
+    margin: auto;
+    display: none;
+}
+.tasks::-webkit-scrollbar-thumb,#task1 textarea::-webkit-scrollbar-thumb{
+    background: rgba(204, 204, 204, 0.288);
+    border-radius: 10px;
+    margin-right: 10px;
+}
+.tasks::-webkit-scrollbar-thumb:hover,#task1 textarea::-webkit-scrollbar-thumb:hover{
+    background: rgba(165, 165, 165, 0.678);
+}
+.tasks #task{
+    position: relative;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 200px;
+    height: 160px;
+    background: rgb(255, 201, 54);
+    border-radius: 10px;
+    text-align: left;
+    color:rgb(255, 255, 255);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: large;
+    transition: all 0.1s linear;
+    
+}
+#task:hover{
+    font-size: larger;
+    box-shadow: 0px 0px 10px 0px gray;
+    background: rgba(255, 255, 255, 0.5);
+    transition: all .1s linear;
+    transform: scale(1.1) rotate(2deg);
+}
+.tasks #task button{
+    /*margin: auto;
+    position: relative ;
+    left: 50%;
+    right:50%;
+    top: 10px;
+    transform: translate(-50%,-50%);
+    font-size: medium;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(255, 228, 196, 0.678);*/
+    position: absolute;
+    border: none;
+    right: 5px;
+    bottom: 10px;
+    border-radius: 30px;
+
+}
+
+#task:last-child{
+    animation: task 0.3s linear;
+}
+
+#task span:hover{
+    color: rgb(255, 255, 255) !important;
+}
+
+#noteTitle{
+    position: relative;
+    margin: 5px;
+    margin-left: 10px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    font-weight:700;
+    font-family: 'Inconsolata',serif;
+}
+
+.tasks #task .taskname{
+    position:sticky;
+    background:transparent;
+    box-shadow: 0px 2px 20px 2px rgba(0, 0, 0, 0.103);
+    border: none;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    height: 75%;
+    margin: auto;
+    margin-top: 5px;
+    padding: 5px;
+    display: -webkit-box;
+    font-family: 'Inconsolata',serif;
+    font-size: larger;
+    white-space:pre-wrap;
+    overflow: auto;
+    word-wrap: break-word;
+    resize: none;
+    outline:none;
+    /*overflow: hidden;
+      display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    
+    white-space: nowrap;
+    */
+    
+}
+
+.delete{
+    position: sticky;
+    padding:0px;
+    float: right;
+    background: transparent;
+    height: 30px;
+    width: 30px;
+    margin: auto;
+    margin-bottom: 0px;
+}
+
+.deleted{
+    animation: delete 0.3s linear;
+}
+.taskname::-webkit-scrollbar{
+    display: none;
+}
+.taskname::-webkit-scrollbar-thumb{
+    background: rgba(204, 204, 204, 0.288);
+    border-radius: 10px;
+    margin-right: 10px;
+}
+#title{
+    /*position:absolute;
+    text-align: center;
+    left:400px;
+    font-size:70px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color:whitesmoke;
+    text-shadow: 5px;
+    margin: 0px;
+    position: absolute; */
+  left: 0; 
+  right: 0; 
+  position: absolute;
+  font-size:50px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color:whitesmoke;
+  margin-left: auto; 
+  margin-right: auto; 
+  text-shadow: 2px 2px 15px gray;
+  width: 350px; /* Need a specific value to work */
+}
+.alert,.alert-danger{
+    display:inline; text-align:center; padding:7px;
+    text-align: center;
+    
+}
+.errorMsg{
+    background:transparent;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    animation: task 0.3s linear ;
+}
+.errorMsg code{
+    text-align: center;
+    font-size: 20px;
+    color: black;
+}
+
+.formbox{
+    left: 20%;
+    color:black;
+    padding: 15px;
+    position: absolute;
+    transform: translate(50%,50%);
+    border-radius: 10px;
+    width: 30%;
+    background: white;
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.466);
+}
+
+#logout{
+    margin: 10px;
+    font-size:50px;
+    size: 100px;
+    color: rgba(240, 248, 255, 0.444);
+    transition: all 0.1s linear;
+    float: left;
+}
+#logout:hover{
+    color: aliceblue;
+    cursor: default;
+    transition: all 0.1s linear;
+}

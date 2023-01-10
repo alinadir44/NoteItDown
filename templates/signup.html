@@ -1,0 +1,18 @@
+{% extends "index.html"%}
+
+{%block frm%}
+<div class="form-floating mb-3">
+    <input type="text" name="fullName" class="form-control" id="floatingInput" placeholder="Your full name" required>
+    <label for="floatingInput">Full Name</label>
+</div>
+{{super()}}
+{%endblock%}
+
+{%block btns%}
+<button type="submit" class="btn btn-primary">Sign Up</button>
+{% if alreadyExists %}
+        <div class="alert alert-danger" style="display:inline; text-align:center; padding:7px; float:inline-end" role="alert">
+            User already exists!
+        </div>
+{% endif %}
+{%endblock%}
