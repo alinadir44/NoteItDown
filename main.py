@@ -1,10 +1,12 @@
 from email.policy import strict
 from http.client import OK
 import string
-from types import NoneType
+#from types import NoneType
 from flask import Flask,render_template,request,session,redirect,abort
 import json
 from flask_mysqldb import MySQL,MySQLdb
+
+NoneType= type(None)
 
 app=Flask(__name__)
 
@@ -14,7 +16,7 @@ with open("config.json","r") as c:
 local_server=True
 
 app.config['MYSQL_HOST']=params['MYSQL_HOST']
-app.config['MYSQL_USER']=params['MYSQL_USER']
+app.config['MYSQL_USER']= params['MYSQL_USER']
 app.config['MYSQL_PASS']=params['MYSQL_PASS']
 app.config['MYSQL_DB']=params['MYSQL_DB']
 app.config['MYSQL_CURSORCLASS']=params['MYSQL_CURSORCLASS']

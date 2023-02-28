@@ -1,13 +1,13 @@
 {
     "params":
     {
-        "MYSQL_HOST":"localhost",
+        "MYSQL_HOST":"172.17.0.2",
         "MYSQL_USER":"root",
         "MYSQL_PASS":"",
         "MYSQL_DB":"notepad",
         "local_server":"True",
         "MYSQL_CURSORCLASS":"DictCursor",
-        "admin_user":"admin",
-        "admin_password":"admin"
+        "admin_user":"user1",
+        "admin_password":"123"
     }
 }
