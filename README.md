@@ -18,7 +18,7 @@
   * ### Minimalistic frontend created using plain **HTML**, **CSS**, and *vanilla* **JS**
 
 # Run the app!
-## ```[Docker](https://docs.docker.com/get-docker/):```
+## [```Docker```](https://docs.docker.com/get-docker/)
 * Ensure Docker is installed on Windows/Linux
 * Run ```sudo docker-compose up```
 * Access the app on **```localhost:5000```**
