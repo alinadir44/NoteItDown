@@ -1,10 +1,11 @@
-FROM mysql:latest
+FROM mysql/mysql-server
 
-ENV MYSQL_ROOT_PASSWORD=password
-ENV MYSQL_DATABASE=notepad
-ENV MYSQL_USER=root
-ENV MYSQL_PASSWORD=mypassword
+MAINTAINER edgecake88@gmail.com
+
+ENV MYSQL_ROOT_PASSWORD=notepass
 
 EXPOSE 3306
 
 COPY init.sql /docker-entrypoint-initdb.d/
+
+CMD ["mysqld"]

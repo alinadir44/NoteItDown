@@ -13,7 +13,7 @@ app=Flask(__name__)
 with open("config.json","r") as c:
     params=json.load(c)["params"]
 
-local_server=True
+local_server=False
 
 app.config['MYSQL_HOST']=params['MYSQL_HOST']
 app.config['MYSQL_USER']= params['MYSQL_USER']
@@ -27,7 +27,7 @@ mysql=MySQL(app)
 
 def updateNote(id, body):
     cur=mysql.connection.cursor()
-    cur.execute("update notes set note_body=%s where note_id=%s",([body],[id],))
+    cur.execute("update NOTES set note_body=%s where note_id=%s",([body],[id],))
     mysql.connection.commit()
     cur.close()
 
@@ -47,7 +47,7 @@ def home():
         if(type(rec)!=NoneType):
             if password==rec["user_pass"]:
                 session["current_user"]=rec
-                cur.execute("SELECT * FROM notes WHERE user_id=%s",([rec["user_id"]],))
+                cur.execute("SELECT * FROM NOTES WHERE user_id=%s",([rec["user_id"]],))
                 notes=cur.fetchall()
                 session["userNotes"]=notes
                 cur.close()
@@ -66,7 +66,7 @@ def signup():
         email=request.form.get("email")
         password=request.form.get("pass")
         cur=mysql.connection.cursor()
-        cur.execute("SELECT user_email from users where user_email=%s",([email],))
+        cur.execute("SELECT user_email from USERS where user_email=%s",([email],))
         rec=cur.fetchone()
         if(type(rec)!=NoneType):
             return render_template("signup.html",alreadyExists=True)
@@ -119,7 +119,7 @@ def deleteNote():
         noteID=request.form.get("noteID")
         print(f"Deleting note with ID: {noteID}\n\n")
         cur=mysql.connection.cursor()
-        cur.execute("delete from notes where note_id=%s",([noteID],))
+        cur.execute("delete from NOTES where note_id=%s",([noteID],))
         mysql.connection.commit()
         cur.close()
         updateNoteList()
@@ -131,7 +131,7 @@ def deleteNote():
 
 def updateNoteList():
     cur=mysql.connection.cursor()
-    cur.execute("select * from notes where user_id=%s",([session["current_user"]["user_id"]],))
+    cur.execute("select * from NOTES where user_id=%s",([session["current_user"]["user_id"]],))
     session["userNotes"]=cur.fetchall()
     cur.close()
 
@@ -142,4 +142,5 @@ def logout():
     #session.pop('userEmail')
     return redirect('/',code=303)
 
-app.run(debug=True)
+if __name__=="__main__":
+    app.run(host='0.0.0.0')
