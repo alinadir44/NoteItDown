@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config
+data:
+  DB_USER: notesuser
+  DB_DB: notepad
+  DB_HOST: db-service
+  MYSQL_ROOT_PASSWORD: notes-pass
+  init.sql: |
+    CREATE DATABASE notepad;
+    CREATE USER 'notesuser'@'%';
+    USE notepad;
+    GRANT ALL PRIVILEGES ON *.* TO 'notesuser'@'%';
+    CREATE TABLE IF NOT EXISTS USERS (user_id INTEGER PRIMARY KEY AUTO_INCREMENT,userFullName varchar(50) NOT NULL,user_email varchar(30) NOT NULL,user_pass varchar(30) NOT NULL) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+    CREATE TABLE IF NOT EXISTS NOTES (note_id INTEGER PRIMARY KEY AUTO_INCREMENT, user_id INTEGER, note_title varchar(20) NOT NULL,note_body varchar(3000) NOT NULL) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
