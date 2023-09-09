@@ -1,7 +1,6 @@
 {
     "params":
     {
-        "MYSQL_HOST":"db",
         "MYSQL_USER":"notesuser",
         "MYSQL_PASS":"",
         "MYSQL_DB":"notepad",

@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  api-load-balancer-service
+spec:
+  selector:
+    app:  notes-api
+  type:  LoadBalancer
+  ports:
+  - name:  api-load-balancer-port
+    port:  80
+    targetPort:  5000
+    protocol: TCP
