@@ -1,7 +1,3 @@
-# Docker
-# Build a Docker image
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-
 trigger:
 - main
 
@@ -10,6 +6,7 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
+  acrsecret: mysecret
 
 stages:
 - stage: Build
@@ -26,7 +23,9 @@ stages:
         repository: 'sank64cr'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
-        tags: '$(tag)'
+        tags: |
+          $(tag)
+          latest
     - task: PublishPipelineArtifact@1
       inputs:
         targetPath: '$(Pipeline.Workspace)/s/k8s'
@@ -40,4 +39,31 @@ stages:
     displayName: Deploy
     pool: mypool 
     steps:
-    
+    - task: DownloadPipelineArtifact@2
+      inputs:
+        buildType: 'current'
+        artifactName: 'manifests'
+        targetPath: '$(Pipeline.Workspace)/manifests'
+    - task: KubernetesManifest@1
+      inputs:
+        action: 'createSecret'
+        connectionType: 'kubernetesServiceConnection'
+        kubernetesServiceConnection: 'myAKSCLuster'
+        namespace: 'default'
+        secretType: 'dockerRegistry'
+        secretName: '$(acrsecret)'
+        dockerRegistryEndpoint: 'acr-svc'
+    - task: KubernetesManifest@1
+      inputs:
+        action: 'deploy'
+        connectionType: 'kubernetesServiceConnection'
+        kubernetesServiceConnection: 'myAKSCLuster'
+        namespace: 'default'
+        manifests: |
+          $(Pipeline.Workspace)/manifests/pvc.yml
+          $(Pipeline.Workspace)/manifests/env-config.yml
+          $(Pipeline.Workspace)/manifests/db-microservice.yml
+          $(Pipeline.Workspace)/manifests/db-svc.yml
+          $(Pipeline.Workspace)/manifests/api-microservice.yml 
+          $(Pipeline.Workspace)/manifests/api-svc.yml
+          $(Pipeline.Workspace)/manifests/api-lb.yml
