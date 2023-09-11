@@ -15,7 +15,7 @@ spec:
       volumes:
       - name: mysqlpvc
         persistentVolumeClaim:
-          claimName: mysql-pvc
+          claimName: azure-disk-pvc
       - name: init
         configMap:
           name: mysql-config
