@@ -36,3 +36,17 @@ spec:
           - name: init
             mountPath: /docker-entrypoint-initdb.d
             readOnly: true
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-service
+  labels: 
+    group: db-config
+spec:
+  type: ClusterIP
+  selector:             # indicates into which pods ClusterIP provides access
+    app: db
+  ports:
+    - port: 3306    # port exposed outside ClusterIP
+      targetPort: 3306    # port exposed by Pod
