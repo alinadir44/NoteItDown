@@ -5,7 +5,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: managed-csi # bound to the managed-csi persistent volume in Azure
+  storageClassName: managed-csi # bound to the managed-csi persistent volume in Azure Cloud
   resources:
     requests:
       storage: 2Gi
