@@ -65,7 +65,5 @@ stages:
           $(Pipeline.Workspace)/manifests/pvc.yml
           $(Pipeline.Workspace)/manifests/env-config.yml
           $(Pipeline.Workspace)/manifests/db-microservice.yml
-          $(Pipeline.Workspace)/manifests/db-svc.yml
           $(Pipeline.Workspace)/manifests/api-microservice.yml 
-          $(Pipeline.Workspace)/manifests/api-svc.yml
           $(Pipeline.Workspace)/manifests/api-lb.yml
