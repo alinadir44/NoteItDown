@@ -17,22 +17,6 @@ spec:
         image: adminer
         ports:
         - containerPort: 8080
-        env:
-          - name: DB_HOST
-            valueFrom:
-              configMapKeyRef:
-                name: mysql-config
-                key: DB_HOST
-          - name: DB_USER
-            valueFrom:
-              configMapKeyRef:
-                name: mysql-config
-                key: DB_USER
-          - name: DB_DB
-            valueFrom:
-              configMapKeyRef:
-                name: mysql-config
-                key: DB_DB
 ---
 apiVersion: v1
 kind: Service
