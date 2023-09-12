@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: notes-api
-        image: sank64cr.azurecr.io/sank64cr
+        image: sank64cr.azurecr.io/alinadir44/noteitdown
         ports:
         - containerPort: 5000
         env:
