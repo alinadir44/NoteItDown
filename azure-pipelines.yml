@@ -22,7 +22,7 @@ stages:
       displayName: Build an image
       inputs:
         containerRegistry: 'acr-svc'
-        repository: 'sank64cr'
+        repository: 'alinadir44/noteitdown'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: |
