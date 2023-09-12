@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adminer-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adminer
+  template:
+    metadata:
+      labels:
+        app: adminer
+    spec:
+      containers:
+      - name: adminer
+        image: adminer
+        ports:
+        - containerPort: 8080
+        env:
+          - name: DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: mysql-config
+                key: DB_HOST
+          - name: DB_USER
+            valueFrom:
+              configMapKeyRef:
+                name: mysql-config
+                key: DB_USER
+          - name: DB_DB
+            valueFrom:
+              configMapKeyRef:
+                name: mysql-config
+                key: DB_DB
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adminer-svc
+  labels: 
+    group: adminer
+spec:
+  type: ClusterIP
+  selector:             # indicates into which pods ClusterIP provides access
+    app: adminer
+  ports:
+    - port: 8080    # port exposed outside ClusterIP
+      targetPort: 8080    # port exposed by Pod
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name:  adminer-load-balancer-service
+spec:
+  selector:
+    app:  adminer
+  type:  LoadBalancer
+  ports:
+  - name:  adminer-load-balancer-port
+    port:  8080
+    targetPort:  8080
+    protocol: TCP
