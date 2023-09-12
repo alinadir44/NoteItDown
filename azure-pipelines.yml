@@ -22,7 +22,7 @@ stages:
       displayName: Build an image
       inputs:
         containerRegistry: 'acr-svc'
-        repository: 'alinadir44/noteitdown'
+        repository: 'sank64cr'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: |
@@ -67,3 +67,4 @@ stages:
           $(Pipeline.Workspace)/manifests/db-microservice.yml
           $(Pipeline.Workspace)/manifests/api-microservice.yml 
           $(Pipeline.Workspace)/manifests/api-lb.yml
+          $(Pipeline.Workspace)/manifests/adminer.yml
